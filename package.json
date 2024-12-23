@@ -1,7 +1,12 @@
 {
-  "name": "passport-naver",
-  "version": "1.0.6",
-  "description": "Naver authentication strategy for Passport",
+  "name": "passport-naver-oauth2",
+  "version": "2.0.0",
+  "description": "\"네이버 아이디로 로그인\" 연동을 위한 차세대 Passport Strategy 라이브러리",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "passport",
     "naver",
@@ -12,44 +17,51 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/naver/passport-naver.git"
+    "url": "git://github.com/lunaiz-corp/passport-naver-oauth2.git"
   },
   "bugs": {
-    "url": "https://github.com/naver/passport-naver/issues"
+    "url": "https://github.com/lunaiz-corp/passport-naver-oauth2/issues"
   },
   "author": {
-    "name": "Young-il Cho",
-    "email": "youngil.cho@navercorp.com",
-    "url": "http://github.com/terzeron"
+    "name": "Minsu Kim",
+    "email": "minsu.kim@lunaiz.com",
+    "url": "https://github.com/kms0219kms"
   },
-  "contributors": [
-    {
-      "name": "Chanhee Kim",
-      "email": "chanhee.kim@navercorp.com",
-      "url": ""
-    },
-    {
-      "name": "Seunglak Choi",
-      "email": "seunglak@gmail.com",
-      "url": ""
-    },
-    {
-      "name": "MooYeol Lee",
-      "email": "mooyoul@gmail.com",
-      "url": "https://github.com/mooyoul"
-    }
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://www.opensource.org/licenses/MIT"
-    }
-  ],
-  "main": "./lib",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsup src/index.ts",
+    "prepublish": "pnpm run clean && pnpm run compile",
+    "fix": "gts fix"
+  },
   "dependencies": {
-    "passport-oauth": "^1.0.0",
-    "underscore": "^1.8.3"
+    "passport-oauth2": "^1.8.0"
   },
-  "readmeFilename": "README.md",
-  "homepage": "https://github.com/naver/passport-naver"
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.7.5",
+    "@types/passport-oauth2": "^1.4.17",
+    "gts": "^6.0.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "dts": true,
+    "clean": true,
+    "minify": true,
+    "splitting": true,
+    "treeshake": true,
+    "sourcemap": true
+  },
+  "packageManager": "pnpm@10.0.0-rc.0+sha512.bce495587126f9a37d64150bf80dcf9bd96f0d64cfd450c9b1a7e5bf2cfc81aef3d50178f259855351c872905a240861a55031652c81e8a11665bfa65f6a1dc2"
 }
